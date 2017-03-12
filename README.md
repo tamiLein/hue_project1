@@ -1,3 +1,3 @@
-# The first project for hue  --> h1
+# The first project for hue
 
 Projekt von Susanne Meyer und Tamara Czakert

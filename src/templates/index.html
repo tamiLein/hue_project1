@@ -65,8 +65,11 @@
             <input v-model="zipCode" v-on:keyup.enter="changePosition">
 
         </div>
-        <div>
+        <div id="vue-map">
             <h2>Dein Weg zur Arbeit:</h2>
+
+            <input id="map-input" class="controls" type="text" placeholder="Search Box">
+            <div id="map"></div>
         </div>
 
         <div id="workout">
@@ -80,6 +83,8 @@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXG3MaN8NW0wEURJ6BBVDjPjqyo4GnkpU&libraries=places"></script>
 <script src="js/script.js"></script>
 </body>
 

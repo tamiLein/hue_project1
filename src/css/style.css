@@ -1,0 +1,33 @@
+
+body {
+    background-image: url("../img/background.jpg");
+    background-size:cover;
+    font-family: 'Lato', sans-serif;
+    background-repeat:no-repeat;
+    height: 100vh;
+    color: #fff;
+}
+
+ul{
+    list-style: none;
+}
+
+ul li{
+    border: 1px solid darkslategrey;
+    padding:10px;
+    margin: 20px 0;
+}
+
+.col-md-6{
+    padding: 100px;
+}
+
+input {
+    background: none;
+    border: none;
+}
+
+#clock{
+    font-size: 50px;
+}
+

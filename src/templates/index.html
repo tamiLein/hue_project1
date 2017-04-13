@@ -6,7 +6,7 @@
     <title>Personal Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="../css/lib/demo.css">
+    <link href="../css/lib/weather-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -29,7 +29,7 @@
 
 
         </div>
-        <div>
+        <div id="termine">
             <h2>Deine Termine:</h2>
             <ul>
                 <li><em>12:00 Uhr</em> | Termintext in kurzer From</li>
@@ -40,14 +40,15 @@
 
             </ul>
         </div>
-        <div>
+        <div id="fruehstueck">
             <h2>Dein heutiges Frühstück:</h2>
-            <label for="schlaf">so lange hab ich geschlafen:</label>
-            <input id="schlaf" type="range" v-model="schlaf" min="0" max="24">
-            <label for="muede">so müde fühl' ich mich heute:</label>
-            <input id="muede" type="range" v-model="müde" min="0" max="10">
-            <label for="work">so viel hab ich heute zu tun:</label>
-            <input id="work" type="range" v-model="work" min="0" max="10">
+            <label for="schlaf">so lange hab ich geschlafen:</label> {{sleep}} Stunden
+            <input id="schlaf" type="range" v-model="sleep" min="0" max="24" >
+
+            <label for="muede">so müde fühl' ich mich heute:</label> {{muede}}
+            <input id="muede" type="range" v-model="muede" min="0" max="10">
+            <label for="work">so viel hab ich heute zu tun:</label> {{workToDo[work]}}
+            <input id="work" type="range" v-model="work" min="0" max="9">
         </div>
 
     </div>
@@ -55,30 +56,30 @@
         <div id="weather">
 
             <div v-if="show">
-                <span class="icon icon-home"></span>
-                {{img}}
-                <br> Temp: {{temp}}
-                <br> Clouds: {{clouds}}
-                <br> Info: {{info}}
+                <span v-bind:class="['icon', 'icon-'+img]"><span id="temp"><br>{{temp}} C°</span></span>
+                <span class="weather-info">{{info}}</span>
             </div>
-            Zip-Code:
+            Position ändern:
             <input v-model="zipCode" v-on:keyup.enter="changePosition">
 
         </div>
-        <div>
+        <div id="map">
             <h2>Dein Weg zur Arbeit:</h2>
         </div>
 
         <div id="workout">
             <h2>Workout:</h2>
-            Name: {{name}}<br>
-            Beschreibung: {{description}}<br>
-            Muskeln: {{muscles}}
+            <b>Name:</b> {{name}}<br>
+            <b>Startposition:</b>  <ul><li v-for="item in start">- {{item}}</li></ul><br>
+            <b>Beschreibung:</b><ul><li v-for="item in description">- {{item}}</li></ul><br>
+            <b>Muskeln:</b> <ul><li v-for="item in muscles">- {{item}}</li></ul>
 
 
         </div>
     </div>
+    <div id="zitat">{{text}}</div>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
 <script src="js/script.js"></script>
 </body>

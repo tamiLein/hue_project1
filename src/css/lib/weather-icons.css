@@ -1,0 +1,115 @@
+@font-face {
+    font-family: 'weather-icomoon';
+    src: url('../../font/weather-icomoon.ttf?kal26') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'weather-icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gift:before {
+    content: "\e912";
+}
+
+.icon-sun:before,
+.icon-01d:before{
+    content: "\e900";
+}
+
+.icon-moon:before,
+.icon-01n:before {
+    content: "\e901";
+}
+
+.icon-wind:before {
+    content: "\e904";
+}
+
+.icon-cloudy:before,
+.icon-02d:before {
+    content: "\e902";
+}
+
+.icon-cloud:before,
+.icon-02n:before {
+    content: "\e903";
+}
+
+.icon-weather:before,
+.icon-50d:before {
+    content: "\e905";
+}
+
+.icon-weather2:before,
+.icon-50n:before {
+    content: "\e906";
+}
+
+.icon-weather3:before {
+    content: "\e907";
+}
+
+.icon-lines:before {
+    content: "\e908";
+}
+
+.icon-cloud2:before,
+.icon-03d:before,
+.icon-03n:before {
+    content: "\e909";
+}
+
+.icon-lightning:before,
+.icon-11d:before,
+.icon-11n:before {
+    content: "\e90a";
+}
+
+.icon-rainy:before,
+.icon-10d:before,
+.icon-10n:before {
+    content: "\e90b";
+}
+
+.icon-rainy2:before,
+.icon-09d:before,
+.icon-09n:before {
+    content: "\e90c";
+}
+
+.icon-windy:before {
+    content: "\e90d";
+}
+
+.icon-windy2:before {
+    content: "\e90e";
+}
+
+.icon-snowy:before {
+    content: "\e90f";
+}
+
+.icon-snowy2:before,
+.icon-13d:before,
+.icon-13n:before {
+    content: "\e910";
+}
+
+.icon-cloudy2:before,
+.icon-04d:before,
+.icon-04n:before{
+    content: "\e911";
+}

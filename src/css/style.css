@@ -12,10 +12,14 @@ ul{
     list-style: none;
 }
 
-ul li{
+#termine ul li{
     border: 1px solid darkslategrey;
     padding:10px;
     margin: 20px 0;
+}
+.col-md-12{
+    background-color: rgba(0, 0, 0, 0.53);
+    height: 100vh;
 }
 
 .col-md-6{
@@ -31,3 +35,55 @@ input {
     font-size: 50px;
 }
 
+#weather{
+    height: 200px;
+    width: 350px;
+    position: absolute;
+    right: 100px;
+}
+
+#weather input{
+    width:50px;
+}
+.weather-info {
+    padding: 20px 0 0 0;
+    display: block;
+}
+
+#zitat {
+    text-align: center;
+    font-size: 24px;
+    font-style: italic;
+    width:99%;
+    bottom: 20px;
+    position: absolute;
+}
+
+.icon{
+    display: block;
+    float: left;
+    width: 150px;
+    font-size: 80px;
+    padding: 20px;
+    text-align: center;
+    line-height: 20px;
+}
+#temp {
+    font-family: Lato;
+    font-size: 30px;
+    line-height: normal;
+}
+#map{
+
+}
+
+#workout b {
+    width: 100px;
+    display: block;
+    margin-top: 10px;
+}
+
+#workout ul{
+    display: inline-block;
+    padding-left:0;
+}

@@ -1,0 +1,51 @@
+{
+  "exercises": [
+    {
+      "id": 1,
+      "name": "Kniebeugen",
+      "startPosition": [
+        "stelle deine Füße etwas weiter als schulterbreit voneinander entfernt auf",
+        "deine Füße sind leicht nach außen gedreht (ca. 20-30 Grad)",
+        "wichtig: Knie und Zehenspitzen zeigen immer in die gleiche Richtung",
+        "Arme waagerecht vor deinem Körper halten",
+        "dein Oberkörper ist minimal nach vorn gebeugt"
+      ],
+      "description": [
+        "spanne deinen Körper an und halte deinen Rücken gerade",
+        "beuge langsam deine Knie, bis deine Oberschenkel parallel zum Boden sind (dein Po schiebt sich dabei nach hinten)",
+        "nach Möglichkeit sollten deine Knie nicht über die Zehenspitzen hinausragen",
+        "bringe deinen Körper kraftvoll zurück in die Ausgangsposition, indem du Druck auf die Fersen ausübst",
+        "erhöhe die Anzahl der Wiederholungen, um den gewünschten Effekt in den Beinen zu spüren"
+      ],
+      "muscles": [
+        "QuadrizepsMuskel",
+        "BeinbizepsMuskel",
+        "Gesäßmuskel"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Seitlicher Step-up",
+      "startPosition": [
+        "stelle dich seitlich neben dein gewähltes Hilfsmittel",
+        "platziere einen Fuß mit angewinkeltem Bein darauf",
+        "halte deinen Oberkörper gerade",
+        "deine Hände kannst du an der Hüfte ablegen oder vor deinem Körper ausstrecken"
+      ],
+      "description": [
+        "drücke dich mit dem auf dem Hilfsmittel positionierten Bein nach oben",
+        "das andere Bein unterstützt diese Bewegung nicht",
+        "ohne Schwung trainieren und Arme an ihrer Ausgangsposition lassen",
+        "nach Möglichkeit nicht mit dem Oberkörper nach vorne neigen",
+        "kehre anschließend langsam zur Ausgangsposition zurück und tippe kurz mit dem Fuß auf dem Boden auf",
+        "Übungsausführung mehrmals hintereinander mit dem gleichen Bein ausführen",
+        "danach die Seiten wechseln und mit der gleichen Anzahl an Wiederholungen durchführen"
+      ],
+      "muscles": [
+        "QuadrizepsMuskel",
+        "AbduktorenMuskel",
+        "Gesäßmuskel"
+      ]
+    }
+  ]
+}

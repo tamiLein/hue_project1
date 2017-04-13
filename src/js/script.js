@@ -1,30 +1,34 @@
 var app = new Vue({
     el: '#app',
     data: {
-        name: 'Mrs Right!',
+        name: localStorage.getItem('name'),
         greeting: 'Hello'
     },
     methods: {
         changeName: function (event) {
             this.name = event.target.value;
+            localStorage.setItem('name', this.name)
         },
 
     },
+
     mounted: function () {
         var date = new Date();
         var hour = date.getHours();
         var that = this;
         if(hour < 11 && hour > 4){
             that.greeting = 'Good Morning, '
-        }else if(hour > 11){
+        }else if(hour < 14){
             that.greeting = "Hello, "
-        }else if(hour > 16){
+        }else if(hour < 18){
             that.greeting ="Good Afternoon, "
-        }else if(hour > 20){
+        }else if(hour < 21){
+            that.greeting ="Good Evening, "
+        }else if(hour < 24){
             that.greeting ="Good Night, "
-        }/*else{
+        }else{
             that.greeting ="ZzZzZz, "
-        }*/
+        }
     },
 
 });
@@ -39,7 +43,7 @@ var clock = new Vue({
         setInterval(function () {
             var date = new Date();
             var hour = date.getHours();
-            if(hour<10) hour = '0' + hours
+            if(hour<10) hour = '0' + hour
             var minutes = date.getMinutes();
             if(minutes<10) minutes = '0' + minutes
             var sec = date.getSeconds();
@@ -84,10 +88,10 @@ var weather = new Vue({
 
             $.get( url, function( data ) {
                 that.weather = data;
-                that.temp = data.main.temp;
+                that.temp = Math.round(data.main.temp);
                 that.clouds = data.clouds.all;
                 that.info = data.weather[0].description;
-                that.img = data.weather[0].main;
+                that.img = data.weather[0].icon;
             });
 
         }
@@ -105,21 +109,58 @@ var workout = new Vue({
     data: {
         description: '',
         muscles: '',
-        name: ''
+        name: '',
+        start:''
     },
     mounted: function() {
             var that = this;
-            var url = 'https://wger.de/api/v2/exercise/?format=json&language=1';
+
+            var random = Math.floor(Math.random()*2);
+            /*var url = 'https://wger.de/api/v2/exercise/?format=json&language=1';
             console.log(url);
 
             $.get( url, function( data ) {
                 var exercise = data.results[Math.floor((Math.random()*20)+1)];
                 that.name = exercise['name'];
                 that.description = exercise['description'];
+                that.description = that.description.replace(/<(?:.|\n)*?>/gm, '');
                 that.muscles = exercise['muscles'];
-            });
+            });*/
 
+            var url = "../json/workout.json";
+            $.get(url, function(data){
+                console.log(data);
+                that.name = data.exercises[random].name;
+                that.start = data.exercises[random].startPosition;
+                that.description = data.exercises[random].description;
+                that.muscles = data.exercises[random].muscles;
+            });
         }
 
-})
+});
 
+var zitat = new Vue({
+    el: '#zitat',
+    data:{
+        text: ''
+    }, mounted: function(){
+            var that = this;
+            //var url = 'http://www.zitate-online.de/zufallszitat.js.php';
+            var url = 'https://taeglicheszit.at/zitat-api.php?format=string';
+
+            $.get(url, function(data){
+                var jsondata = JSON.stringify(data);
+               that.text = data;
+            });
+    }
+});
+
+var fruehstueck = new Vue({
+    el: '#fruehstueck',
+    data: {
+        sleep: '7',
+        muede: '1',
+        work: '4',
+        workToDo: ['überhaupt nichts', 'nichts', 'wenig', 'kaum', 'genau richtig', 'etwas mehr', 'viel mehr', 'extrem viel', 'unüberschaubar']
+    },
+});

@@ -55,6 +55,8 @@ var clock = new Vue({
     },
 })
 
+var mapApiKey = 'AIzaSyAXG3MaN8NW0wEURJ6BBVDjPjqyo4GnkpU';
+
 var apiKey = '0c606526ad06da0a4c4246eb0282da0a';
 var zipCode = '4511';
 var country = 'at';
@@ -100,6 +102,131 @@ var weather = new Vue({
         var that = this;
         that.loadWeather();
     },
+
+});
+
+var demo = new Vue({
+    el: '#vue-map',
+    data: {
+
+    },
+    methods: {
+        loadMap: function() {
+            /*var url = 'https://maps.googleapis.com/maps/api/js?key='+mapApiKey+'&libraries=places';
+
+            console.log(url);
+
+            $.get( url, function( data ) {
+
+            });*/
+
+            var myLatLong = new google.maps.LatLng(48.368346, 14.515042);
+
+            var myOptions = {
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: myLatLong
+            };
+
+            var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+            var marker = new google.maps.Marker({
+                position: myLatLong,
+                map: map,
+                title: 'Campus Hagenberg'
+            });
+
+            // Create the search box and link it to the UI element.
+            var input = document.getElementById('map-input');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            // Bias the SearchBox results towards current map's viewport.
+            map.addListener('bounds_changed', function() {
+                searchBox.setBounds(map.getBounds());
+            });
+
+            var markers = [];
+            // Listen for the event fired when the user selects a prediction and retrieve
+            // more details for that place.
+            searchBox.addListener('places_changed', function() {
+                var places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                }
+
+                // Clear out the old markers.
+                markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+                markers = [];
+
+                // For each place, get the icon, name and location.
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function(place) {
+                    var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    };
+
+                    // Create a marker for each place.
+                    markers.push(new google.maps.Marker({
+                        map: map,
+                        icon: icon,
+                        title: place.name,
+                        position: place.geometry.location
+                    }));
+
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                });
+                map.fitBounds(bounds);
+            });
+        },
+        loadDirection: function() {
+            console.log("direction");
+
+            var origin = new google.maps.LatLng(48.309745, 14.284308);
+            var destination = new google.maps.LatLng(48.368346, 14.515042);
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: origin,
+                scrollwheel: false,
+                zoom: 7
+            });
+
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+                map: map
+            });
+
+            // Set destination, origin and travel mode.
+            var request = {
+                destination: destination,
+                origin: origin,
+                travelMode: 'DRIVING'
+            };
+
+            // Pass the directions request to the directions service.
+            var directionsService = new google.maps.DirectionsService();
+            directionsService.route(request, function(response, status) {
+                if (status == 'OK') {
+                    // Display the route on the map.
+                    directionsDisplay.setDirections(response);
+                }
+            });
+        }
+    },
+    mounted: function () {
+        this.loadMap();
+    }
 
 });
 

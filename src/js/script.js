@@ -242,7 +242,7 @@ var workout = new Vue({
     mounted: function() {
             var that = this;
 
-            var random = Math.floor(Math.random()*2);
+            var random = Math.floor(Math.random()*5);
             /*var url = 'https://wger.de/api/v2/exercise/?format=json&language=1';
             console.log(url);
 
@@ -256,7 +256,6 @@ var workout = new Vue({
 
             var url = "../json/workout.json";
             $.get(url, function(data){
-                console.log(data);
                 that.name = data.exercises[random].name;
                 that.start = data.exercises[random].startPosition;
                 that.description = data.exercises[random].description;

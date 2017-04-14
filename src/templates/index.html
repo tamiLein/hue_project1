@@ -42,6 +42,7 @@
         </div>
         <div id="fruehstueck">
             <h2>Dein heutiges Frühstück:</h2>
+            <div class="col-md-6">
             <label for="schlaf">so lange hab ich geschlafen:</label> {{sleep}} Stunden
             <input id="schlaf" type="range" v-model="sleep" min="0" max="24" >
 
@@ -49,6 +50,8 @@
             <input id="muede" type="range" v-model="muede" min="0" max="10">
             <label for="work">so viel hab ich heute zu tun:</label> {{workToDo[work]}}
             <input id="work" type="range" v-model="work" min="0" max="9">
+            </div>
+            <div class="col-md-6"><img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.jpg'" width="400px" height="auto">{{sleep}}-{{muede}}-{{work}}.jpg</div>
         </div>
 
     </div>
@@ -71,11 +74,11 @@
         </div>
 
         <div id="workout">
-            <h2>Workout:</h2>
-            <b>Name:</b> {{name}}<br>
+            <h2>Übung des Tages: {{name}}</h2>
             <b>Startposition:</b>  <ul><li v-for="item in start">- {{item}}</li></ul><br>
             <b>Beschreibung:</b><ul><li v-for="item in description">- {{item}}</li></ul><br>
-            <b>Muskeln:</b> <ul><li v-for="item in muscles">- {{item}}</li></ul>
+
+            <b>Muskeln:</b> <i v-for="item in muscles">- {{item}}</i>
 
 
         </div>

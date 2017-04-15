@@ -23,11 +23,6 @@
 
             <h1>{{greeting}} <input v-model="name" v-on:keyup.enter="changeName"></h1>
 
-
-
-            <input v-on:keyup.enter="loadWeather">
-
-
         </div>
         <div id="termine">
             <h2>Deine Termine:</h2>
@@ -53,7 +48,16 @@
             </div>
             <div class="col-md-6"><img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.jpg'" width="400px" height="auto">{{sleep}}-{{muede}}-{{work}}.jpg</div>
         </div>
+        <!--
+        <div id="important">
 
+            <h2>Don't forget: <input type="text" id="importantInput" v-on:keyup.enter="add"></h2>
+
+            <ul>
+                <li  v-for="item in items"><input type="checkbox" v-on:click="remove"> {{item}}<button class="delete" v-bind:value="item" >X</button> </li>
+            </ul>
+        </div>
+-->
     </div>
     <div class="col-md-6">
         <div id="weather">
@@ -72,6 +76,8 @@
             <input id="map-input" class="controls" type="text" placeholder="Search Box">
             <div id="map"></div>
         </div>
+
+        <div id="mapTest">{{duration}}</div>
 
         <div id="workout">
             <h2>Übung des Tages: {{name}}</h2>

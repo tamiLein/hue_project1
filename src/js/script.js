@@ -7,6 +7,7 @@ var app = new Vue({
     methods: {
         changeName: function (event) {
             this.name = event.target.value;
+            event.target.blur();
             localStorage.setItem('name', this.name)
         },
 
@@ -64,19 +65,19 @@ var country = 'at';
 var weather = new Vue({
     el: '#weather',
     data: {
-        zipCode: '4511',
+        zipCode: localStorage.getItem('zip'),
         country: 'at',
         show: false,
         weather: '',
-        temp: '',
+        temp: localStorage.getItem('temp'),
         clouds: '',
-        info: '',
-        img: ''
+        info: localStorage.getItem('info'),
+        img: localStorage.getItem('img')
     },
     methods: {
         changePosition: function (event) {
             this.zipCode = event.target.value;
-            //event.target.value = "";
+            event.target.blur();
             this.loadWeather();
         },
         loadWeather: function () {
@@ -89,12 +90,19 @@ var weather = new Vue({
             var url = 'http://api.openweathermap.org/data/2.5/weather?zip='+that.zipCode+',at&appid=0c606526ad06da0a4c4246eb0282da0a&lang=de&units=metric';
 
             $.get( url, function( data ) {
-                that.weather = data;
-                that.temp = Math.round(data.main.temp);
-                that.clouds = data.clouds.all;
-                that.info = data.weather[0].description;
-                that.img = data.weather[0].icon;
+                    that.weather = data;
+                    that.temp = Math.round(data.main.temp);
+                    that.clouds = data.clouds.all;
+                    that.info = data.weather[0].description;
+                    that.img = data.weather[0].icon;
+                    localStorage.setItem('temp', that.temp);
+                    localStorage.setItem('info', that.info);
+                    localStorage.setItem('img', that.img);
+                    localStorage.setItem('zip', that.zipCode);
+
             });
+
+
 
         }
     },
@@ -230,6 +238,37 @@ var demo = new Vue({
 
 });
 
+var mapTest = new Vue({
+    el: '#mapTest',
+    data: {
+        origin: 'Linz',
+        destination: 'Hagenberg',
+        mode: 'driving',
+        duration: '??'
+    },
+
+    methods: {
+      loadMyMap: function(){
+          var that = this;
+          var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=75+9th+Ave+New+York,+NY&destination=MetLife+Stadium+1+MetLife+Stadium+Dr+East+Rutherford,+NJ+07073&key=AIzaSyAXG3MaN8NW0wEURJ6BBVDjPjqyo4GnkpU';
+
+          console.log(url);
+
+          $.get( url, function( data ) {
+              console.log("get");
+              console.log(data.routes[0].legs[0].duration.text);
+              console.log(data);
+              that.duration = data.routes[0].legs[0].duration.text;
+              that.duration = '22';
+          });
+      }
+    },
+    mounted: function(){
+        console.log("mounted");
+        this.loadMyMap();
+    }
+});
+
 
 var workout = new Vue({
     el: '#workout',
@@ -284,9 +323,26 @@ var zitat = new Vue({
 var fruehstueck = new Vue({
     el: '#fruehstueck',
     data: {
-        sleep: '7',
+        sleep: '1',
         muede: '1',
-        work: '4',
+        work: '1',
         workToDo: ['überhaupt nichts', 'nichts', 'wenig', 'kaum', 'genau richtig', 'etwas mehr', 'viel mehr', 'extrem viel', 'unüberschaubar']
     },
 });
+
+/*var important = new Vue({
+   el: '#important',
+    data:{
+       items: []
+    }, methods:{
+           add: function(event){
+               this.items.push(event.target.value);
+               event.target.value = '';
+           },
+        remove: function(event){
+             var index = this.items.indexOf(event.target.html);
+             console.log(index);
+             delete this.items[index];
+        }
+    }
+});*/

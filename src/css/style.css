@@ -28,6 +28,10 @@ ul{
 input {
     background: none;
     border: none;
+
+}
+#important input{
+    border-bottom: 1px solid white;
 }
 
 #clock{

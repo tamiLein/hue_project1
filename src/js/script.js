@@ -55,7 +55,7 @@ var clock = new Vue({
     },
 })
 
-var mapApiKey = 'AIzaSyAXG3MaN8NW0wEURJ6BBVDjPjqyo4GnkpU';
+var mapApiKey = 'AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc';
 
 var apiKey = '0c606526ad06da0a4c4246eb0282da0a';
 var zipCode = '4511';
@@ -108,17 +108,23 @@ var weather = new Vue({
 var demo = new Vue({
     el: '#vue-map',
     data: {
-
+        travel: ''
     },
     methods: {
-        loadMap: function() {
-            /*var url = 'https://maps.googleapis.com/maps/api/js?key='+mapApiKey+'&libraries=places';
+        loadTravel: function() {
+            //var url = 'https://maps.googleapis.com/maps/api/js?key='+mapApiKey+'&libraries=places';
 
-            console.log(url);
+            //var url = 'https://www.google.com/maps/embed/v1/directions?key='+mapApiKey+'&origin=Oslo+Norway&destination=Telemark+Norway';
+
+            var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key='+mapApiKey;
 
             $.get( url, function( data ) {
+                console.log(data);
+                this.travel = data;
+            });
+        },
+        loadMap: function() {
 
-            });*/
 
             var myLatLong = new google.maps.LatLng(48.368346, 14.515042);
 
@@ -226,6 +232,7 @@ var demo = new Vue({
     },
     mounted: function () {
         this.loadMap();
+        this.loadTravel();
     }
 
 });

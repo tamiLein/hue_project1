@@ -23,11 +23,6 @@
 
             <h1>{{greeting}} <input v-model="name" v-on:keyup.enter="changeName"></h1>
 
-
-
-            <input v-on:keyup.enter="loadWeather">
-
-
         </div>
         <div id="termine">
             <h2>Deine Termine:</h2>
@@ -42,6 +37,7 @@
         </div>
         <div id="fruehstueck">
             <h2>Dein heutiges Frühstück:</h2>
+            <div class="col-md-6">
             <label for="schlaf">so lange hab ich geschlafen:</label> {{sleep}} Stunden
             <input id="schlaf" type="range" v-model="sleep" min="0" max="24" >
 
@@ -49,8 +45,19 @@
             <input id="muede" type="range" v-model="muede" min="0" max="10">
             <label for="work">so viel hab ich heute zu tun:</label> {{workToDo[work]}}
             <input id="work" type="range" v-model="work" min="0" max="9">
+            </div>
+            <div class="col-md-6"><img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.jpg'" width="400px" height="auto">{{sleep}}-{{muede}}-{{work}}.jpg</div>
         </div>
+        <!--
+        <div id="important">
 
+            <h2>Don't forget: <input type="text" id="importantInput" v-on:keyup.enter="add"></h2>
+
+            <ul>
+                <li  v-for="item in items"><input type="checkbox" v-on:click="remove"> {{item}}<button class="delete" v-bind:value="item" >X</button> </li>
+            </ul>
+        </div>
+-->
     </div>
     <div class="col-md-6">
         <div id="weather">
@@ -72,12 +79,14 @@
             <div id="map"></div>
         </div>
 
+        <div id="mapTest">{{duration}}</div>
+
         <div id="workout">
-            <h2>Workout:</h2>
-            <b>Name:</b> {{name}}<br>
+            <h2>Übung des Tages: {{name}}</h2>
             <b>Startposition:</b>  <ul><li v-for="item in start">- {{item}}</li></ul><br>
             <b>Beschreibung:</b><ul><li v-for="item in description">- {{item}}</li></ul><br>
-            <b>Muskeln:</b> <ul><li v-for="item in muscles">- {{item}}</li></ul>
+
+            <b>Muskeln:</b> <i v-for="item in muscles">- {{item}}</i>
 
 
         </div>

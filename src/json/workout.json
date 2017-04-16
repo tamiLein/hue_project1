@@ -42,10 +42,72 @@
         "danach die Seiten wechseln und mit der gleichen Anzahl an Wiederholungen durchführen"
       ],
       "muscles": [
-        "QuadrizepsMuskel",
-        "AbduktorenMuskel",
+        "Quadrizeps",
+        "Abduktoren",
         "Gesäßmuskel"
       ]
+    },
+    {
+      "id": 3,
+      "name": "Stuhl Beckenlift",
+      "startPosition": [
+      "stelle einen Stuhl so auf, dass dieser nicht verrutschen kann (z.B. an eine Wand oder auf einen Teppich)",
+      "lege dich flach vor dem Stuhl auf den Boden, die Füße zeigen zum Stuhl",
+      "deine Arme legst du jeweils seitlich neben deinem Körper ab",
+      "winkle deine Beine an und positioniere beide Füße etwa hüftbreit voneinander entfernt am Ende der Sitzfläche"
+      ],
+      "description": [
+      "hebe nun langsam dein Becken",
+      "dein Körper befindet sich in der Endposition, vom Oberkörper bis zu den Knien, in einer Linie",
+      "das Körpergewicht tragen die Füße und Schultern",
+      "Hüfte nicht durchhängen lassen",
+      "Position kurz halten",
+      "Ausführung mehrmals für ein effektives Po-Training wiederholen"
+      ],
+      "muscles": [
+      "Gesäßmuskel"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Scherenschlag",
+      "startPosition": [
+        "lege dich mit dem Rücken auf den Boden oder eine Fitnessmatte",
+        "beide Beine sind gebeugt und bleiben es auch während der Ausführung",
+        "deine Füße liegen mit ihren Fersen auf",
+        "deinen Kopf legst du ebenfalls mit ab, deine Arme jeweils seitlich neben deinem Körper",
+        "die Hände kannst du für eine bessere Stabilität unter deinem Po platzieren, dadurch kannst du auch ein Hohlkreuz vermeiden",
+        "ziehe in diesem Zusammenhang zusätzlich den Bauch zum Boden"
+      ],
+      "description": [
+        "spanne deinen Bauch an und hebe nun ein Bein etwa 30–40 Grad an",
+        "das andere Bein hebst du leicht an, so dass es knapp über dem Boden schwebt",
+        "wechsle nun gleichzeitig die Positionen der Beine",
+        "das obere Bein senkst du, das andere bringst du nach oben",
+        "führe den Beinwechsel mehrmals hintereinander aus"
+      ],
+      "muscles": [
+        "gerader Bauchmuskel", "seitliche Bauchmuskeln"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Kobra",
+      "startPosition": [
+        "lege dich mit der Vorderseite deines Körpers auf den Boden oder eine Fitnessmatte",
+        "deine Beine streckst du nach hinten aus, deine Arme seitlich nach hinten, sodass sich deine Hände neben dem Becken befinden",
+        "die Handflächen liegen auf dem Boden auf"
+      ],
+      "description": [
+        "spanne deinen Körper an",
+        "hebe nun gleichzeitig deinen Oberkörper, Kopf und Arme an",
+        "diese Bewegung sollte insgesamt kontrolliert und langsam erfolgen",
+        "halte die Spannung für einige Sekunden lang und kehre anschließend langsam zur Ausgangsposition zurück",
+        "wiederhole die Übungsausführung anschließend mehrmals"
+      ],
+      "muscles":[
+      "Rückenstrecker", "Gesäßmuskel"
+        ]
     }
   ]
 }

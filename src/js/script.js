@@ -116,7 +116,13 @@ var weather = new Vue({
 var demo = new Vue({
     el: '#vue-map',
     data: {
-        travel: ''
+        directionsDisplay: '',
+        origin: '',
+        destination: '',
+        originName: 'Linz',
+        destinationName: 'Hagenberg',
+        mode: 'DRIVING',
+        duration: ''
     },
     methods: {
         loadTravel: function() {
@@ -208,24 +214,75 @@ var demo = new Vue({
         loadDirection: function() {
             console.log("direction");
 
-            var origin = new google.maps.LatLng(48.309745, 14.284308);
-            var destination = new google.maps.LatLng(48.368346, 14.515042);
+            var that = this;
+
+            that.origin = new google.maps.LatLng(48.309745, 14.284308);
+            that.destination = new google.maps.LatLng(48.368346, 14.515042);
 
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: origin,
+                center: that.origin,
                 scrollwheel: false,
                 zoom: 7
             });
 
-            var directionsDisplay = new google.maps.DirectionsRenderer({
+            this.directionsDisplay = new google.maps.DirectionsRenderer({
                 map: map
             });
 
+            this.getDirection(that);
+            this.loadTravelTime(that);
+
+            // Bias the SearchBox results towards current map's viewport.
+            map.addListener('bounds_changed', function() {
+                searchBoxOrigin.setBounds(map.getBounds());
+            });
+
+            // Create the search box and link it to the UI element.
+            var originInput = document.getElementById('map-origin-input');
+            var searchBoxOrigin = new google.maps.places.SearchBox(originInput);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+
+            var destinationInput = document.getElementById('map-destination-input');
+            var searchBoxDestination = new google.maps.places.SearchBox(destinationInput);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+
+
+            searchBoxOrigin.addListener('places_changed', function() {
+                var places = searchBoxOrigin.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                }
+
+                that.origin = places[0].geometry.location;
+                that.originName = places[0].address_components[0].short_name;
+
+                that.getDirection(that);
+                that.loadTravelTime(that);
+            });
+
+            searchBoxDestination.addListener('places_changed', function() {
+                var places = searchBoxDestination.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                }
+
+                that.destination = places[0].geometry.location;
+                that.destinationName = places[0].address_components[0].short_name;
+
+
+                that.getDirection(that);
+                that.loadTravelTime(that);
+            });
+
+        },
+        getDirection: function(that) {
             // Set destination, origin and travel mode.
             var request = {
-                destination: destination,
-                origin: origin,
-                travelMode: 'DRIVING'
+                destination: that.destination,
+                origin: that.origin,
+                travelMode: that.mode
             };
 
             // Pass the directions request to the directions service.
@@ -233,13 +290,24 @@ var demo = new Vue({
             directionsService.route(request, function(response, status) {
                 if (status == 'OK') {
                     // Display the route on the map.
-                    directionsDisplay.setDirections(response);
+                    that.directionsDisplay.setDirections(response);
                 }
+            });
+        },
+        loadTravelTime: function(that) {
+            var url = 'https://maps.googleapis.com/maps/api/directions/json?origin='+that.originName+'&destination='+that.destinationName+'&key='+mapApiKey;
+
+            $.get( url, function( data ) {
+                console.log(data.routes[0].legs[0].duration.text);
+                console.log(data);
+                that.duration = data.routes[0].legs[0].duration.text;
+
             });
         }
     },
     mounted: function () {
-        this.loadMap();
+        //this.loadMap();
+        this.loadDirection();
         this.loadTravel();
     }
 
@@ -257,7 +325,7 @@ var mapTest = new Vue({
     methods: {
       loadMyMap: function(){
           var that = this;
-          var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=75+9th+Ave+New+York,+NY&destination=MetLife+Stadium+1+MetLife+Stadium+Dr+East+Rutherford,+NJ+07073&key=AIzaSyAXG3MaN8NW0wEURJ6BBVDjPjqyo4GnkpU';
+          var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=75+9th+Ave+New+York,+NY&destination=MetLife+Stadium+1+MetLife+Stadium+Dr+East+Rutherford,+NJ+07073&key=AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc';
 
           console.log(url);
 
@@ -266,13 +334,13 @@ var mapTest = new Vue({
               console.log(data.routes[0].legs[0].duration.text);
               console.log(data);
               that.duration = data.routes[0].legs[0].duration.text;
-              that.duration = '22';
+              //that.duration = '22';
           });
       }
     },
     mounted: function(){
         console.log("mounted");
-        this.loadMyMap();
+        //this.loadMyMap();
     }
 });
 

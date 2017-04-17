@@ -116,7 +116,7 @@ input {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-#map-input {
+#map-origin-input, #map-destination-input {
     background-color: #fff;
     font-family: Roboto;
     font-size: 15px;
@@ -124,10 +124,10 @@ input {
     margin-left: 12px;
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
-    width: 300px;
+    width: 200px;
 }
 
-#map-input:focus {
+#map-origin-input:focus, #map-destination-input:focus {
     border-color: #4d90fe;
 }
 

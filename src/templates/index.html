@@ -27,11 +27,11 @@
         <div id="termine">
             <h2>Deine Termine:</h2>
             <ul>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer From</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer From</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer From</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer From</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer From</li>
+                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
+                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
+                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
+                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
+                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
 
             </ul>
         </div>
@@ -73,13 +73,20 @@
         <div id="vue-map">
             <h2>Dein Weg zur Arbeit:</h2>
 
-            <div>{{ travel }}</div>
+            <!--<button v-on:click="loadMap">Karte</button>
+            <button v-on:click="loadDirection">Routenplanung</button>-->
 
-            <input id="map-input" class="controls" type="text" placeholder="Search Box">
+           <!-- <input id="map-input" class="controls" type="text" placeholder="Search Box">
+            <div id="map"></div>-->
+
+            <input id="map-origin-input" class="controls" type="text" placeholder="Start">
+            <input id="map-destination-input" class="controls" type="text" placeholder="Ziel">
             <div id="map"></div>
+
+            {{ duration }}
         </div>
 
-        <div id="mapTest">{{duration}}</div>
+        <!--<div id="mapTest">{{duration}}</div>-->
 
         <div id="workout">
             <h2>Übung des Tages: {{name}}</h2>
@@ -98,7 +105,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXG3MaN8NW0wEURJ6BBVDjPjqyo4GnkpU&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc&libraries=places"></script>
 <script src="js/script.js"></script>
 </body>
 

@@ -119,8 +119,8 @@ var demo = new Vue({
         directionsDisplay: '',
         origin: '',
         destination: '',
-        originName: 'Linz',
-        destinationName: 'Hagenberg',
+        originId: 'ChIJTYWZ-pWVc0cRxHV5VywpU3w',
+        destinationId: 'ChIJGzciup-mc0cR29nSjeigZro',
         mode: 'DRIVING',
         duration: ''
     },
@@ -255,7 +255,7 @@ var demo = new Vue({
                 }
 
                 that.origin = places[0].geometry.location;
-                that.originName = places[0].address_components[0].short_name;
+                that.originId = places[0].place_id;
 
                 that.getDirection(that);
                 that.loadTravelTime(that);
@@ -269,8 +269,7 @@ var demo = new Vue({
                 }
 
                 that.destination = places[0].geometry.location;
-                that.destinationName = places[0].address_components[0].short_name;
-
+                that.destinationId = places[0].place_id;
 
                 that.getDirection(that);
                 that.loadTravelTime(that);
@@ -295,7 +294,9 @@ var demo = new Vue({
             });
         },
         loadTravelTime: function(that) {
-            var url = 'https://maps.googleapis.com/maps/api/directions/json?origin='+that.originName+'&destination='+that.destinationName+'&key='+mapApiKey;
+            var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=place_id:'+that.originId+'&destination=place_id:'+that.destinationId+'&key='+mapApiKey;
+
+            console.log(url);
 
             $.get( url, function( data ) {
                 console.log(data.routes[0].legs[0].duration.text);
@@ -313,7 +314,7 @@ var demo = new Vue({
 
 });
 
-var mapTest = new Vue({
+/*var mapTest = new Vue({
     el: '#mapTest',
     data: {
         origin: 'Linz',
@@ -342,7 +343,7 @@ var mapTest = new Vue({
         console.log("mounted");
         //this.loadMyMap();
     }
-});
+});*/
 
 
 var workout = new Vue({

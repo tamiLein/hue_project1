@@ -122,21 +122,10 @@ var demo = new Vue({
         originId: 'ChIJTYWZ-pWVc0cRxHV5VywpU3w',
         destinationId: 'ChIJGzciup-mc0cR29nSjeigZro',
         mode: 'DRIVING',
-        duration: ''
+        duration: '',
+        durationInTraffic: ''
     },
     methods: {
-        loadTravel: function() {
-            //var url = 'https://maps.googleapis.com/maps/api/js?key='+mapApiKey+'&libraries=places';
-
-            //var url = 'https://www.google.com/maps/embed/v1/directions?key='+mapApiKey+'&origin=Oslo+Norway&destination=Telemark+Norway';
-
-            var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key='+mapApiKey;
-
-            $.get( url, function( data ) {
-                console.log(data);
-                this.travel = data;
-            });
-        },
         loadMap: function() {
 
 
@@ -212,8 +201,6 @@ var demo = new Vue({
             });
         },
         loadDirection: function() {
-            console.log("direction");
-
             var that = this;
 
             that.origin = new google.maps.LatLng(48.309745, 14.284308);
@@ -281,7 +268,11 @@ var demo = new Vue({
             var request = {
                 destination: that.destination,
                 origin: that.origin,
-                travelMode: that.mode
+                travelMode: that.mode,
+                drivingOptions: {
+                    departureTime: new Date(Date.now()),
+                    trafficModel: 'bestguess'
+                }
             };
 
             // Pass the directions request to the directions service.
@@ -290,18 +281,19 @@ var demo = new Vue({
                 if (status == 'OK') {
                     // Display the route on the map.
                     that.directionsDisplay.setDirections(response);
+                    console.log(response);
+                    that.durationInTraffic = response.routes[0].legs[0].duration_in_traffic.text;
+                    that.duration= response.routes[0].legs[0].duration.text;
                 }
             });
         },
         loadTravelTime: function(that) {
             var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=place_id:'+that.originId+'&destination=place_id:'+that.destinationId+'&key='+mapApiKey;
 
-            console.log(url);
-
             $.get( url, function( data ) {
                 console.log(data.routes[0].legs[0].duration.text);
-                console.log(data);
-                that.duration = data.routes[0].legs[0].duration.text;
+                //console.log(data);
+                //that.duration = data.routes[0].legs[0].duration.text;
 
             });
         }
@@ -309,7 +301,6 @@ var demo = new Vue({
     mounted: function () {
         //this.loadMap();
         this.loadDirection();
-        this.loadTravel();
     }
 
 });

@@ -1,5 +1,5 @@
 <template lang="html">
-    <div>
+    <div id="clock">
         {{ clock }}
         <h1>{{greeting}} <input v-model="name" v-on:keyup.enter="changeName"></h1>
     </div>

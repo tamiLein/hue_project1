@@ -1,5 +1,5 @@
 <template lang="html">
-    <div>
+    <div id="weather">
         <div v-if="show">
             <span v-bind:class="['icon', 'icon-'+img]"><span id="temp"><br>{{temp}} C°</span></span>
             <span class="weather-info">{{info}}</span>

@@ -1,5 +1,5 @@
 <template lang="html">
-    <div>
+    <div id="workout">
         <h2>Übung des Tages: {{name}}</h2>
         <b>Startposition:</b>  <ul><li v-for="item in start">- {{item}}</li></ul><br>
         <b>Beschreibung:</b><ul><li v-for="item in description">- {{item}}</li></ul><br>

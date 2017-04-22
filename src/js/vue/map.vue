@@ -1,5 +1,5 @@
 <template lang="html">
-    <div>
+    <div id="vue-map">
         <h2>Dein Weg zur Arbeit:</h2>
 
         <input id="map-origin-input" class="controls" type="text" placeholder="Start">

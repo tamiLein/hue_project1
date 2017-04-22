@@ -38,78 +38,6 @@
             }
         },
         methods: {
-            loadMap: function() {
-                var myLatLong = new google.maps.LatLng(48.368346, 14.515042);
-
-                var myOptions = {
-                    zoom: 15,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    center: myLatLong
-                };
-
-                var map = new google.maps.Map(document.getElementById("map"), myOptions);
-
-                var marker = new google.maps.Marker({
-                    position: myLatLong,
-                    map: map,
-                    title: 'Campus Hagenberg'
-                });
-
-                // Create the search box and link it to the UI element.
-                var input = document.getElementById('map-input');
-                var searchBox = new google.maps.places.SearchBox(input);
-                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-                // Bias the SearchBox results towards current map's viewport.
-                map.addListener('bounds_changed', function() {
-                    searchBox.setBounds(map.getBounds());
-                });
-
-                var markers = [];
-                // Listen for the event fired when the user selects a prediction and retrieve
-                // more details for that place.
-                searchBox.addListener('places_changed', function() {
-                    var places = searchBox.getPlaces();
-
-                    if (places.length == 0) {
-                        return;
-                    }
-
-                    // Clear out the old markers.
-                    markers.forEach(function(marker) {
-                        marker.setMap(null);
-                    });
-                    markers = [];
-
-                    // For each place, get the icon, name and location.
-                    var bounds = new google.maps.LatLngBounds();
-                    places.forEach(function(place) {
-                        var icon = {
-                            url: place.icon,
-                            size: new google.maps.Size(71, 71),
-                            origin: new google.maps.Point(0, 0),
-                            anchor: new google.maps.Point(17, 34),
-                            scaledSize: new google.maps.Size(25, 25)
-                        };
-
-                        // Create a marker for each place.
-                        markers.push(new google.maps.Marker({
-                            map: map,
-                            icon: icon,
-                            title: place.name,
-                            position: place.geometry.location
-                        }));
-
-                        if (place.geometry.viewport) {
-                            // Only geocodes have viewport.
-                            bounds.union(place.geometry.viewport);
-                        } else {
-                            bounds.extend(place.geometry.location);
-                        }
-                    });
-                    map.fitBounds(bounds);
-                });
-            },
             loadDirection: function() {
                 console.log("direction");
 
@@ -129,7 +57,6 @@
                 });
 
                 this.getDirection(that);
-                //this.loadTravelTime(that);
 
                 // Bias the SearchBox results towards current map's viewport.
                 map.addListener('bounds_changed', function() {
@@ -157,7 +84,6 @@
                     that.originId = places[0].place_id;
 
                     that.getDirection(that);
-                    //that.loadTravelTime(that);
                 });
 
                 searchBoxDestination.addListener('places_changed', function() {
@@ -171,7 +97,6 @@
                     that.destinationId = places[0].place_id;
 
                     that.getDirection(that);
-                    //that.loadTravelTime(that);
                 });
 
             },
@@ -193,26 +118,13 @@
                     if (status == 'OK') {
                         // Display the route on the map.
                         that.directionsDisplay.setDirections(response);
-                        console.log(response);
                         that.durationInTraffic = response.routes[0].legs[0].duration_in_traffic.text;
                         that.duration= response.routes[0].legs[0].duration.text;
                     }
                 });
-            },
-            loadTravelTime: function(that) {
-                var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=place_id:'+that.originId+'&destination=place_id:'+that.destinationId+'&key='+mapApiKey;
-
-
-                $.get( url, function( data ) {
-                    console.log(data.routes[0].legs[0].duration.text);
-                    console.log(data);
-                    that.duration = data.routes[0].legs[0].duration.text;
-
-                });
             }
         },
         mounted: function () {
-            //this.loadMap();
             this.loadDirection();
         }
     };

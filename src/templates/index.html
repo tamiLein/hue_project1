@@ -31,19 +31,8 @@
 
         </div>
 
-        <div id="fruehstueck">
-            <h2>Dein heutiges Frühstück:</h2>
-            <div class="col-md-6">
-            <label for="schlaf">so lange hab ich geschlafen:</label> {{sleep}} Stunden
-            <input id="schlaf" type="range" v-model="sleep" min="1" max="3" >
-
-            <label for="muede">so müde fühl' ich mich heute:</label> {{muede}}
-            <input id="muede" type="range" v-model="muede" min="0" max="1">
-            <label for="work">so viel hab ich heute zu tun:</label> {{workToDo[work]}}
-            <input id="work" type="range" v-model="work" min="0" max="1">
+        <div id="breakfast">
             </div>
-            <div class="col-md-6"><img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.png'" width="auto" height="200px"></div>
-        </div>
 
     </div>
     <div class="col-md-6">
@@ -72,12 +61,6 @@
         </div>
 
         <div id="workout">
-            <h2>Übung des Tages: {{name}}</h2>
-            <b>Startposition:</b>  <ul><li v-for="item in start">- {{item}}</li></ul><br>
-            <b>Beschreibung:</b><ul><li v-for="item in description">- {{item}}</li></ul><br>
-
-            <b>Muskeln:</b> <i v-for="item in muscles">- {{item}}</i>
-
 
         </div>
  
@@ -92,8 +75,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc&libraries=places"></script>
 <script src="js/vendor.js"></script>
 <script src="js/script.js"></script>
-<script src="js/dashboard.js"></script>
-<script src="js/chat.js"></script>
+<!--<script src="js/dashboard.js"></script>
+<script src="js/chat.js"></script>-->
 </body>
 
 </html>

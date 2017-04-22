@@ -319,39 +319,6 @@ var demo = new Vue({
 
 
 
-var workout = new Vue({
-    el: '#workout',
-    data: {
-        description: '',
-        muscles: '',
-        name: '',
-        start:''
-    },
-    mounted: function() {
-        var that = this;
-
-        var random = Math.floor(Math.random()*5);
-        /*var url = 'https://wger.de/api/v2/exercise/?format=json&language=1';
-         console.log(url);
-
-         $.get( url, function( data ) {
-         var exercise = data.results[Math.floor((Math.random()*20)+1)];
-         that.name = exercise['name'];
-         that.description = exercise['description'];
-         that.description = that.description.replace(/<(?:.|\n)*?>/gm, '');
-         that.muscles = exercise['muscles'];
-         });*/
-
-        var url = "../json/workout.json";
-        $.get(url, function(data){
-            that.name = data.exercises[random].name;
-            that.start = data.exercises[random].startPosition;
-            that.description = data.exercises[random].description;
-            that.muscles = data.exercises[random].muscles;
-        });
-    }
-
-});
 
 var zitat = new Vue({
     el: '#zitat',
@@ -369,16 +336,5 @@ var zitat = new Vue({
     }
 });
 
-var fruehstueck = new Vue({
-    el: '#fruehstueck',
-    data: {
-        sleep: '1',
-        muede: '1',
-        work: '1',
-        workToDo: ['wenig', 'unüberschaubar']
-    }
-});
 
-/**
- * Created by Tamara on 22.04.2017.
- */
+

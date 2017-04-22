@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import firebase from './lib/firebase';
+    import firebase from '../lib/firebase';
 
     export default {
         data: function() {

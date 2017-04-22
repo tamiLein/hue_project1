@@ -2,10 +2,10 @@
  * Created by Tamara on 22.04.2017.
  */
 import Vue from 'vueCommon';
-import App from './app.vue';
+import App from './chat.vue';
 
 Vue.filter('date', function (value) {
-    console.log(value);
+    //console.log(value);
     let date = new Date(value);
     let days = date.getDate();
     let months = date.getMonth() + 1;

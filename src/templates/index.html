@@ -13,107 +13,36 @@
 </head>
 
 <body>
+
+<i class="icon icon-cloudy2 animation-move"></i>
+<i class="icon icon-rainy2 animation-fall"></i>
 <div class="col-md-12">
     <div class="col-md-6">
-        <div id="clock">
-            {{ clock }}
-        </div>
-        <div id="app">
+        <div id="clock"></div>
 
-            <h1>{{greeting}} <input v-model="name" v-on:keyup.enter="changeName"></h1>
+        <div id="firebase"></div>
 
-        </div>
-        <div id="termine">
-            <h2>Deine Termine:</h2>
-            <ul>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
+        <div id="breakfast"></div>
 
-            </ul>
-        </div>
-        <div id="fruehstueck">
-            <h2>Dein heutiges Frühstück:</h2>
-            <div class="col-md-6">
-            <label for="schlaf">so lange hab ich geschlafen:</label> {{sleep}} Stunden
-            <input id="schlaf" type="range" v-model="sleep" min="1" max="3" >
-
-            <label for="muede">so müde fühl' ich mich heute:</label> {{muede}}
-            <input id="muede" type="range" v-model="muede" min="1" max="2">
-            <label for="work">so viel hab ich heute zu tun:</label> {{workToDo[work]}}
-            <input id="work" type="range" v-model="work" min="1" max="2">
-            </div>
-            <div class="col-md-6"><img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.png'" width="auto" height="200px"></div>
-        </div>
-        <!--
-        <div id="important">
-
-            <h2>Don't forget: <input type="text" id="importantInput" v-on:keyup.enter="add"></h2>
-
-            <ul>
-                <li  v-for="item in items"><input type="checkbox" v-on:click="remove"> {{item}}<button class="delete" v-bind:value="item" >X</button> </li>
-            </ul>
-        </div>
--->
     </div>
     <div class="col-md-6">
-        <div id="weather">
+        <div id="weather"></div>
 
-            <div v-if="show">
-                <span v-bind:class="['icon', 'icon-'+img]"><span id="temp"><br>{{temp}} C°</span></span>
-                <span class="weather-info">{{info}}</span>
-            </div>
-            Position ändern:
-            <input v-model="zipCode" v-on:keyup.enter="changePosition">
+        <div id="vue-map"></div>
 
-        </div>
-        <div id="vue-map">
-            <h2>Dein Weg zur Arbeit:</h2>
-
-           <!-- <input id="map-input" class="controls" type="text" placeholder="Search Box">
-            <div id="map"></div>-->
-
-            <input id="map-origin-input" class="controls" type="text" placeholder="Start">
-            <input id="map-destination-input" class="controls" type="text" placeholder="Ziel">
-            <div id="map"></div>
-
-            <div id="duration">Aktuelle Fahrtzeit: {{ durationInTraffic }}</div>
-
-            <div v-if="durationInTraffic < duration">
-                Du kannst dir noch etwas Zeit lassen. Heute ist weniger Verkehr als &uuml;blich!
-            </div>
-
-            <div v-else-if="durationInTraffic > duration">
-                Du solltest dich etwas beeilen. Heute ist mehr Verkehr als sonst.
-            </div>
-
-            <div v-else>
-                Alles wie gewohnt!
-            </div>
-        </div>
-
-        <div id="workout">
-            <h2>Übung des Tages: {{name}}</h2>
-            <b>Startposition:</b>  <ul><li v-for="item in start">- {{item}}</li></ul><br>
-            <b>Beschreibung:</b><ul><li v-for="item in description">- {{item}}</li></ul><br>
-
-            <b>Muskeln:</b> <i v-for="item in muscles">- {{item}}</i>
-
-
-        </div>
- 
-   
-</div>
-     <div id="zitat">{{text}}</div>
+        <div id="workout"></div>
     </div>
+    <div id="quote"></div>
+</div>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc&libraries=places"></script>
+<script src="js/vendor.js"></script>
 <script src="js/script.js"></script>
+
 </body>
 
 </html>

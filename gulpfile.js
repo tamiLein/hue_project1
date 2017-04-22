@@ -71,12 +71,12 @@ gulp.task('json', function() {
         .pipe(gulp.dest('build/json'));
 });
 
-gulp.task('watch', function () {
-    // legacy task. scss does the job now
-    //gulp.watch('src/css/**/*.css', ['css']);
-    gulp.watch('src/scss/**/*', ['scss']);
-    gulp.watch(['src/js/**/*'], ['js']);
-    gulp.watch('src/templates/**/*', ['templates']);
+
+gulp.task('watch', function() {
+  //gulp.watch('src/css/**/*.css', ['css']);
+  gulp.watch('src/scss/**/*', ['scss']);
+  gulp.watch('src/js/**/*.js', ['js']);
+  gulp.watch('src/templates/**/*.html', ['templates']);
 });
 
 gulp.task('serve', function () {
@@ -90,5 +90,5 @@ gulp.task('serve', function () {
     });
 });
 
-gulp.task('default', ['css', 'font', 'js', 'templates', 'img', 'json']);
+gulp.task('default', ['scss', 'font', 'js', 'templates', 'img', 'json']);
 gulp.task('dev', ['default', 'watch', 'serve']);

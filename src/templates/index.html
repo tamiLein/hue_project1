@@ -20,7 +20,6 @@
         </div>
         <div id="app">
 
-
             <h1>{{greeting}} <input v-model="name" v-on:keyup.enter="changeName"></h1>
 
         </div>
@@ -80,11 +79,20 @@
             <input id="map-destination-input" class="controls" type="text" placeholder="Ziel">
             <div id="map"></div>
 
-            <div id="duration">Fahrtzeit: {{ duration }}</div>
-            <div >Fahrtzeit (in Traffic): {{ durationInTraffic }}</div>
-        </div>
+            <div id="duration">Aktuelle Fahrtzeit: {{ durationInTraffic }}</div>
 
-        <!--<div id="mapTest">{{duration}}</div>-->
+            <div v-if="durationInTraffic < duration">
+                Du kannst dir noch etwas Zeit lassen. Heute ist weniger Verkehr als &uuml;blich!
+            </div>
+
+            <div v-else-if="durationInTraffic > duration">
+                Du solltest dich etwas beeilen. Heute ist mehr Verkehr als sonst.
+            </div>
+
+            <div v-else>
+                Alles wie gewohnt!
+            </div>
+        </div>
 
         <div id="workout">
             <h2>Übung des Tages: {{name}}</h2>
@@ -100,6 +108,7 @@
 </div>
      <div id="zitat">{{text}}</div>
     </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>

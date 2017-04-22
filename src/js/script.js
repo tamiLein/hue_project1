@@ -10,9 +10,7 @@ var app = new Vue({
             event.target.blur();
             localStorage.setItem('name', this.name)
         },
-
     },
-
     mounted: function () {
         var date = new Date();
         var hour = date.getHours();
@@ -30,8 +28,7 @@ var app = new Vue({
         }else{
             that.greeting ="ZzZzZz, "
         }
-    },
-
+    }
 });
 
 var clock = new Vue({
@@ -52,9 +49,10 @@ var clock = new Vue({
             var digital = hour + ':' + minutes + ':' + sec;
             that.clock = digital;
         },1000)
-
     },
-})
+});
+
+
 
 var mapApiKey = 'AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc';
 
@@ -99,11 +97,7 @@ var weather = new Vue({
                     localStorage.setItem('info', that.info);
                     localStorage.setItem('img', that.img);
                     localStorage.setItem('zip', that.zipCode);
-
             });
-
-
-
         }
     },
     mounted: function () {
@@ -122,8 +116,8 @@ var demo = new Vue({
         originId: 'ChIJTYWZ-pWVc0cRxHV5VywpU3w',
         destinationId: 'ChIJGzciup-mc0cR29nSjeigZro',
         mode: 'DRIVING',
-        duration: '',
-        durationInTraffic: ''
+        duration: 0,
+        durationInTraffic: 0
     },
     methods: {
         loadMap: function() {
@@ -270,7 +264,7 @@ var demo = new Vue({
                 origin: that.origin,
                 travelMode: that.mode,
                 drivingOptions: {
-                    departureTime: new Date(Date.now()),
+                    departureTime: new Date(Date.now() + 60 * 1000 * 30), // in einer halben Stunde
                     trafficModel: 'bestguess'
                 }
             };
@@ -298,43 +292,27 @@ var demo = new Vue({
             });
         }
     },
+    computed: {
+        travelTime: function() {
+            var theClass = "normal";
+
+            if(this.durationInTraffic < this.duration) {
+                theClass = "fast";
+            }
+
+            if(this.durationInTraffic > this.duration) {
+                theClass = "slow";
+            }
+
+            return theClass;
+        }
+    },
     mounted: function () {
         //this.loadMap();
         this.loadDirection();
     }
 
 });
-
-/*var mapTest = new Vue({
-    el: '#mapTest',
-    data: {
-        origin: 'Linz',
-        destination: 'Hagenberg',
-        mode: 'driving',
-        duration: '??'
-    },
-
-    methods: {
-      loadMyMap: function(){
-          var that = this;
-          var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=75+9th+Ave+New+York,+NY&destination=MetLife+Stadium+1+MetLife+Stadium+Dr+East+Rutherford,+NJ+07073&key=AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc';
-
-          console.log(url);
-
-          $.get( url, function( data ) {
-              console.log("get");
-              console.log(data.routes[0].legs[0].duration.text);
-              console.log(data);
-              that.duration = data.routes[0].legs[0].duration.text;
-              //that.duration = '22';
-          });
-      }
-    },
-    mounted: function(){
-        console.log("mounted");
-        //this.loadMyMap();
-    }
-});*/
 
 
 var workout = new Vue({
@@ -368,7 +346,6 @@ var workout = new Vue({
                 that.muscles = data.exercises[random].muscles;
             });
         }
-
 });
 
 var zitat = new Vue({

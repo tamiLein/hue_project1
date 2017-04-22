@@ -10,6 +10,7 @@ body {
   color: #fff;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 ul {
@@ -142,3 +143,30 @@ input {
 
 
 
+.animation-move{
+  font-size:100px;
+  position: absolute;
+  -webkit-animation: move 10s linear infinite;
+  -moz-animation: move 10s linear infinite;
+}
+
+@-webkit-keyframes move {
+  to {margin-left:100%;}
+}
+@-moz-keyframes move {
+  to {margin-left:100%;}
+}
+
+.animation-fall{
+  font-size:100px;
+  position: absolute;
+  -webkit-animation: fall 10s linear infinite;
+  -moz-animation: fall 10s linear infinite;
+}
+
+@-webkit-keyframes fall {
+  to {margin-top:100%;}
+}
+@-moz-keyframes fall {
+  to {margin-top:100%;}
+}

@@ -13,6 +13,8 @@
 </head>
 
 <body>
+
+<i class="icon icon-cloudy2 animation"></i>
 <div class="col-md-12">
     <div class="col-md-6">
         <div id="clock">
@@ -24,17 +26,11 @@
             <h1>{{greeting}} <input v-model="name" v-on:keyup.enter="changeName"></h1>
 
         </div>
-        <div id="termine">
-            <h2>Deine Termine:</h2>
-            <ul>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
-                <li><em>12:00 Uhr</em> | Termintext in kurzer Form</li>
 
-            </ul>
+        <div id="firebase">
+
         </div>
+
         <div id="fruehstueck">
             <h2>Dein heutiges Frühstück:</h2>
             <div class="col-md-6">
@@ -42,22 +38,13 @@
             <input id="schlaf" type="range" v-model="sleep" min="1" max="3" >
 
             <label for="muede">so müde fühl' ich mich heute:</label> {{muede}}
-            <input id="muede" type="range" v-model="muede" min="1" max="2">
+            <input id="muede" type="range" v-model="muede" min="0" max="1">
             <label for="work">so viel hab ich heute zu tun:</label> {{workToDo[work]}}
-            <input id="work" type="range" v-model="work" min="1" max="2">
+            <input id="work" type="range" v-model="work" min="0" max="1">
             </div>
             <div class="col-md-6"><img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.png'" width="auto" height="200px"></div>
         </div>
-        <!--
-        <div id="important">
 
-            <h2>Don't forget: <input type="text" id="importantInput" v-on:keyup.enter="add"></h2>
-
-            <ul>
-                <li  v-for="item in items"><input type="checkbox" v-on:click="remove"> {{item}}<button class="delete" v-bind:value="item" >X</button> </li>
-            </ul>
-        </div>
--->
     </div>
     <div class="col-md-6">
         <div id="weather">
@@ -86,8 +73,6 @@
             <div id="duration">Fahrtzeit: {{ duration }}</div>
         </div>
 
-        <!--<div id="mapTest">{{duration}}</div>-->
-
         <div id="workout">
             <h2>Übung des Tages: {{name}}</h2>
             <b>Startposition:</b>  <ul><li v-for="item in start">- {{item}}</li></ul><br>
@@ -103,10 +88,14 @@
      <div id="zitat">{{text}}</div>
     </div>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc&libraries=places"></script>
+<script src="js/vendor.js"></script>
 <script src="js/script.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/chat.js"></script>
 </body>
 
 </html>

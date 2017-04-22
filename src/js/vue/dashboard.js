@@ -1,4 +1,4 @@
-var app = new Vue({
+/*var app = new Vue({
     el: '#app',
     data: {
         name: localStorage.getItem('name'),
@@ -35,29 +35,7 @@ var app = new Vue({
         console.log(that.greeting);
     },
 
-});
-
-var clock = new Vue({
-    el: '#clock',
-    data: {
-        clock: ''
-    },
-    mounted: function () {
-        var that = this;
-        setInterval(function () {
-            var date = new Date();
-            var hour = date.getHours();
-            if(hour<10) hour = '0' + hour
-            var minutes = date.getMinutes();
-            if(minutes<10) minutes = '0' + minutes
-            var sec = date.getSeconds();
-            if(sec<10) sec = '0' + sec
-            var digital = hour + ':' + minutes + ':' + sec;
-            that.clock = digital;
-        },1000)
-
-    },
-})
+});*/
 
 var mapApiKey = 'AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc';
 
@@ -65,7 +43,7 @@ var apiKey = '0c606526ad06da0a4c4246eb0282da0a';
 var zipCode = '4511';
 var country = 'at';
 
-var weather = new Vue({
+/*var weather = new Vue({
     el: '#weather',
     data: {
         zipCode: localStorage.getItem('zip'),
@@ -114,7 +92,7 @@ var weather = new Vue({
         that.loadWeather();
     },
 
-});
+});*/
 
 var demo = new Vue({
     el: '#vue-map',
@@ -320,7 +298,7 @@ var demo = new Vue({
 
 
 
-var zitat = new Vue({
+/*var zitat = new Vue({
     el: '#zitat',
     data:{
         text: ''
@@ -334,7 +312,7 @@ var zitat = new Vue({
             that.text = data;
         });
     }
-});
+});*/
 
 
 

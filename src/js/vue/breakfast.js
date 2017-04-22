@@ -8,5 +8,5 @@ import Breakfast from './breakfast.vue';
 new Vue({
     el: '#breakfast',
     components: { breakfast: Breakfast },
-    template: `<span><breakfast></breakfast></span>`,
+    template: `<breakfast></breakfast>`,
 });

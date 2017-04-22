@@ -7,7 +7,7 @@ import Workout from './workout.vue';
 new Vue({
     el: '#workout',
     components: { workout: Workout },
-    template: `<span><workout></workout></span>`,
+    template: `<workout></workout>`,
 });
 
 

@@ -17,33 +17,16 @@
 <i class="icon icon-cloudy2 animation"></i>
 <div class="col-md-12">
     <div class="col-md-6">
-        <div id="clock">
-            {{ clock }}
-        </div>
-        <div id="app">
+        <div id="clock"></div>
 
+        <div id="firebase"></div>
 
-            <h1>{{greeting}} <input v-model="name" v-on:keyup.enter="changeName"></h1>
-
-        </div>
-
-        <div id="firebase">
-
-        </div>
-
-        <div id="breakfast">
-            </div>
+        <div id="breakfast"></div>
 
     </div>
     <div class="col-md-6">
         <div id="weather">
 
-            <div v-if="show">
-                <span v-bind:class="['icon', 'icon-'+img]"><span id="temp"><br>{{temp}} C°</span></span>
-                <span class="weather-info">{{info}}</span>
-            </div>
-            Position ändern:
-            <input v-model="zipCode" v-on:keyup.enter="changePosition">
 
         </div>
         <div id="vue-map">
@@ -60,14 +43,12 @@
             <div >Fahrtzeit (in Traffic): {{ durationInTraffic }}</div>
         </div>
 
-        <div id="workout">
-
-        </div>
+        <div id="workout"></div>
  
    
-</div>
-     <div id="zitat">{{text}}</div>
     </div>
+    <div id="quote"></div>
+</div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
@@ -75,8 +56,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUfPaTKo2A5d5ImrMlYXNE4RW3jhueOPc&libraries=places"></script>
 <script src="js/vendor.js"></script>
 <script src="js/script.js"></script>
-<!--<script src="js/dashboard.js"></script>
-<script src="js/chat.js"></script>-->
+
 </body>
 
 </html>

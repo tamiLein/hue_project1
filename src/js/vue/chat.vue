@@ -45,9 +45,8 @@
                     message,
                     username,
                     createdAt: (new Date()).getTime(),
-                    messageRef
+                    messagesRef
                 };
-
 
                 messagesRef.set(chatMessage).catch(function(error) {
                     console.error(error);

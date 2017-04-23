@@ -43,7 +43,7 @@ gulp.task('font', function() {
 });
 
 gulp.task('js', function () {
-    gulp.src('src/js/*.js')
+    gulp.src('src/js/**/*.js')
         .pipe(plumber())
         .pipe(named())
         .pipe(webpackStream(webpackConfig, webpack))

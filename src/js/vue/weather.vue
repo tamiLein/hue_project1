@@ -1,12 +1,15 @@
 <template lang="html">
     <div id="weather">
 
+
+
         <div v-if="show">
             <span v-bind:class="['icon', 'icon-'+img]"><span id="temp"><br>{{temp}} C°</span></span>
             <span class="weather-info">{{info}}</span>
         </div>
         Position ändern:
-        <input v-model="zipCode" v-on:keyup.enter="changePosition">    </div>
+        <input v-model="zipCode" v-on:keyup.enter="changePosition">
+    </div>
 </template>
 
 
@@ -56,6 +59,18 @@
                     localStorage.setItem('zip', that.zipCode);
 
                 });
+
+                if(/bewölkt/.test(this.info) || /wolken/.test(this.info)) {
+                    $('.rain').innerHTML = '';
+                    this.createClouds();
+                }
+                else if(/regen/.test(this.info)) {
+                    $('.rain').innerHTML = '';
+                    this.createRain();
+                }
+                else {
+                    $('.rain').innerHTML = '';
+                }
             },
             createRain: function(){
                 for(let i = 0; i < 10; i++){
@@ -81,9 +96,9 @@
         mounted: function () {
             var that = this;
             that.loadWeather();
-            that.createRain();
-            that.createClouds();
-        },
+            //that.createRain();
+            //that.createClouds();
+        }
     };
 
 

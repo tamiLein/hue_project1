@@ -189,7 +189,7 @@ input {
 .animation-move{
   font-size:100px;
   position: absolute;
-  @include animation(move, 10s, linear, infinite);
+  @include animation(move, 15s, linear, infinite);
 }
 
 @-webkit-keyframes move {
@@ -213,7 +213,7 @@ input {
   to {margin-top: 80%;}
 }
 
-section #rain{
+section .rain{
   position: absolute;
   width: 100vw;
   height:100vh;

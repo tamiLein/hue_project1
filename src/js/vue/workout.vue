@@ -4,7 +4,7 @@
         <b>Startposition:</b>  <ul><li v-for="item in start">- {{item}}</li></ul><br>
         <b>Beschreibung:</b><ul><li v-for="item in description">- {{item}}</li></ul><br>
 
-        <b>Muskeln:</b> <i v-for="item in muscles">- {{item}}</i>
+        <b>Muskeln:</b><ul> <li v-for="item in muscles">- {{item}}</li></ul>
     </div>
 </template>
 

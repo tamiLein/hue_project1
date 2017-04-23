@@ -1,5 +1,15 @@
 @import "imports/layout";
 
+@mixin animation($name, $duration, $timing, $iteration) {
+  -webkit-animation: $name $duration $timing $iteration;
+  -moz-animation: $name $duration $timing $iteration;
+}
+
+@mixin box-sizing($value) {
+  -moz-box-sizing: $value;
+  -webkit-box-sizing: $value;
+  box-sizing: $value;
+}
 
 body {
   background-image: url("../img/background2.jpg");
@@ -13,6 +23,14 @@ body {
   overflow: hidden;
 }
 
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
 ul {
   list-style: none;
 }
@@ -23,25 +41,42 @@ ul {
 }
 
 .col-md-6{
-  padding: 50px;
+  padding-left: 50px;
+  padding-top: 20px;
 
   div#chat, #chat *{
     background-color: transparent;
+
     input{
       border-bottom:1px solid white;
     }
+
     small{
       font-style: italic;
     }
+
     .username{
       float: left;
       display: inline;
-    }form{
-    width: 50%;
-           display: inline-block;
-           margin: 10px 0;
-    padding: 10px 0;
-         }
+    }
+
+    form{
+      width: 50%;
+      display: inline-block;
+      margin: 10px 0;
+      padding: 10px 0;
+    }
+
+    ul {
+      li {
+        padding: 5px;
+      }
+
+      button {
+        margin-right: 10px;
+        font-size: 11px;
+      }
+    }
   }
 }
 
@@ -52,7 +87,7 @@ input {
 }
 
 #clock{
-  font-size: 50px;
+  font-size: 35px;
 }
 
 #weather{
@@ -84,7 +119,7 @@ input {
   display: block;
   float: left;
   width: 150px;
-  font-size: 80px;
+  font-size: 60px;
   padding: 20px;
   text-align: center;
   line-height: 20px;
@@ -92,12 +127,12 @@ input {
 
 #temp {
   font-family: Lato;
-  font-size: 30px;
-  line-height: normal;
+  font-size: 27px;
+  //line-height: normal;
 }
 
 #workout {
-  margin-top: 50px;
+  margin-top: 40px;
 
   b {
     width: 100px;
@@ -112,13 +147,12 @@ input {
 }
 
 #vue-map{
-  margin-top: 120px;
-
+  margin-top: 100px;
 }
 
-
 #map{
-  height: 250px;
+  height: 230px;
+  width: 700px;
   border: 1px solid black;
   color: black;
 }
@@ -127,8 +161,7 @@ input {
   margin-top: 10px;
   border: 1px solid transparent;
   border-radius: 2px 0 0 2px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
+  @include box-sizing(box-sizing);
   height: 32px;
   outline: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -153,18 +186,10 @@ input {
   margin-top: 10px;
 }
 
-.slow {
-  //background-color: red;
-}
-
-
-
-
 .animation-move{
   font-size:100px;
   position: absolute;
-  -webkit-animation: move 10s linear infinite;
-  -moz-animation: move 10s linear infinite;
+  @include animation(move, 10s, linear, infinite);
 }
 
 @-webkit-keyframes move {
@@ -177,16 +202,17 @@ input {
 .animation-fall{
   font-size:100px;
   position: absolute;
-  -webkit-animation: fall 10s linear infinite;
-  -moz-animation: fall 10s linear infinite;
+  @include animation(fall, 10s, linear, infinite);
 }
 
 @-webkit-keyframes fall {
   to {margin-top: 80% ;}
 }
+
 @-moz-keyframes fall {
   to {margin-top: 80%;}
 }
+
 section #rain{
   position: absolute;
   width: 100vw;

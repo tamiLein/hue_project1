@@ -39,8 +39,6 @@
         },
         methods: {
             loadDirection: function() {
-                console.log("direction");
-
                 var that = this;
 
                 that.origin = new google.maps.LatLng(48.309745, 14.284308);

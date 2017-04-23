@@ -139,8 +139,3 @@ input {
 }
 
 
-.animation{
-    transition: all 10s ease-in-out;
-    transform: translate(100vw,0);
-}
-

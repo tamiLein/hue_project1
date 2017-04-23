@@ -24,6 +24,25 @@ ul {
 
 .col-md-6{
   padding: 50px;
+
+  div#chat, #chat *{
+    background-color: transparent;
+    input{
+      border-bottom:1px solid white;
+    }
+    small{
+      font-style: italic;
+    }
+    .username{
+      float: left;
+      display: inline;
+    }form{
+    width: 50%;
+           display: inline-block;
+           margin: 10px 0;
+    padding: 10px 0;
+         }
+  }
 }
 
 input {
@@ -31,9 +50,6 @@ input {
   border: none;
 
 }
-/*#important input{
-  border-bottom: 1px solid white;
-}*/
 
 #clock{
   font-size: 50px;
@@ -102,7 +118,6 @@ input {
 
 
 #map{
-  width: 80%;
   height: 250px;
   border: 1px solid black;
   color: black;
@@ -143,6 +158,8 @@ input {
 }
 
 
+
+
 .animation-move{
   font-size:100px;
   position: absolute;
@@ -165,8 +182,29 @@ input {
 }
 
 @-webkit-keyframes fall {
-  to {margin-top:100%;}
+  to {margin-top: 80% ;}
 }
 @-moz-keyframes fall {
-  to {margin-top:100%;}
+  to {margin-top: 80%;}
+}
+section #rain{
+  position: absolute;
+  width: 100vw;
+  height:100vh;
+}
+
+@media(max-width: 1024px){
+  body{
+    overflow: inherit;
+    height: auto;
+
+  }.col-md-12{
+       height:auto;
+     }
+  #quote{
+    position: relative;
+  }.img-breakfast{
+       text-align: center;
+     }
+
 }

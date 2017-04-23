@@ -1,24 +1,25 @@
 <template lang="html">
-    <div>
-        <h1>Chat!</h1>
+    <div id="chat">
+        <h1>Chat</h1>
 
         <div>
             status: {{ status }}
         </div>
-        <div>
+        <div class="username">
             <input v-model="username">
         </div>
-        <ul>
-            <li v-for="message in messages">
-                {{ message.message }}<br>
-                <small>{{ message.username }}, {{ message.createdAt | date }}</small>
-            </li>
-        </ul>
-
         <form v-on:submit.prevent="sendMessage(message, username)">
             <input v-model="message">
             <button type="submit">Send</button>
         </form>
+        <ul>
+            <li v-for="message in messages">
+                <button v-on:click="deleteMessage()">X</button>{{ message.message }}<br>
+                <small>{{ message.username }}, {{ message.createdAt | date }}</small>
+            </li>
+        </ul>
+
+
     </div>
 </template>
 
@@ -31,24 +32,35 @@
                 status: '-',
                 username: 'Unknown',
                 message: '',
+                myMessageRef: '',
                 messages: []
             }
         },
         methods: {
             sendMessage: function(message, username) {
+                const messagesRef = firebase.database().ref('messages').push();
+
+                this.myMessageRef = messagesRef;
                 let chatMessage = {
                     message,
                     username,
-                    createdAt: (new Date()).getTime()
+                    createdAt: (new Date()).getTime(),
+                    messageRef
                 };
 
-                const messagesRef = firebase.database().ref('messages').push();
+
                 messagesRef.set(chatMessage).catch(function(error) {
                     console.error(error);
                 }).then(() => {
                     this.message = '';
                     console.log('wrote data to database', chatMessage);
                 });
+            },
+            deleteMessage: function(ref){
+                /*ref.remove(function(error) {
+                    alert(error ? "Uh oh!" : "Success!");
+                });*/
+                console.log("delet");
             }
         },
         mounted: function() {
@@ -64,6 +76,7 @@
                     snapshot.forEach((childSnapshot) => {
                         //var childKey = childSnapshot.key;
                         var childData = childSnapshot.val();
+                        console.log(childData);
                         newMessages.push(childData);
                     });
 

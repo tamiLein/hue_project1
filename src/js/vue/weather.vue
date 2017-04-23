@@ -1,5 +1,6 @@
 <template lang="html">
     <div id="weather">
+
         <div v-if="show">
             <span v-bind:class="['icon', 'icon-'+img]"><span id="temp"><br>{{temp}} C°</span></span>
             <span class="weather-info">{{info}}</span>
@@ -55,14 +56,33 @@
                     localStorage.setItem('zip', that.zipCode);
 
                 });
+            },
+            createRain: function(){
+                for(let i = 0; i < 10; i++){
+                    $('.rain').append('<i class="icon icon-rainy2 animation-fall" id="drop'+i+'"></i>');
+                    var dropLeft = (Math.floor(Math.random()*(1920 - 0 +1) +0));
+                    var dropTop = -(Math.floor(Math.random()*1000+100));
+                    $('#drop'+i).css('left',dropLeft);
+                    $('#drop'+i).css('top',dropTop);
 
+                }
+            },
+            createClouds: function(){
+                for(let i = 0; i < 10; i++){
+                    $('.rain').append('<i class="icon icon-cloudy animation-move" id="move'+i+'"></i>');
+                    var dropTop = (Math.floor(Math.random()*(1080 - 0 +1) +0));
+                    var dropLeft = -(Math.floor(Math.random()*3000+100));
+                    $('#move'+i).css('left',dropLeft);
+                    $('#move'+i).css('top',dropTop);
 
-
+                }
             }
         },
         mounted: function () {
             var that = this;
             that.loadWeather();
+            that.createRain();
+            that.createClouds();
         },
     };
 

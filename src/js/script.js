@@ -5,3 +5,6 @@ require('./vue/weather.js');
 require('./vue/clock');
 require('./vue/quote');
 require('./vue/map');
+
+
+

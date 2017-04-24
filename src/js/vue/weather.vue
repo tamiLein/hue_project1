@@ -39,6 +39,10 @@
                 var that = this;
                 that.show = true;
 
+                if(that.zipCode.length < 4){
+                    that.zipCode = '4020';
+                }
+
                 //var url = `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${country}&appid=${apiKey}&lang=de&units=metric`;
 
                 //var url = 'http://api.openweathermap.org/data/2.5/weather?zip=4511,at&appid=0c606526ad06da0a4c4246eb0282da0a&lang=de&units=metric';

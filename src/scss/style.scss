@@ -32,17 +32,33 @@ ul {
 
 .backgroundImg {
   background-color: rgba(0, 0, 0, 0.53);
-  //height: 100vh;
+  height: 100vh;
+
+  .row{
+    max-width: 1920px;
+    margin:auto;
+  }
+  .row:last-child{
+    bottom: 30px;
+    position: absolute;
+    width: 100%;
+  }
 }
 
 .padding {
   padding-left: 50px;
+  padding-right: 50px;
 }
+
+
 
 #breakfast {
 
   .col-md-6 {
     padding-top: 20px;
+  }
+  .img-breakfast {
+    text-align: center;
   }
 }
 
@@ -84,7 +100,7 @@ ul {
   ul {
     height: 250px;
     overflow: auto;
-    width: 600px;
+    width: 100%;
     border: 1px solid white;
     padding: 5px;
     margin-top: 5px;
@@ -110,7 +126,7 @@ input {
 }
 
 #clock {
-  font-size: 30px;
+  font-size: 50px;
 }
 
 #clock, #weather {
@@ -120,7 +136,7 @@ input {
 #weather {
   width: 350px;
   position: absolute;
-  right: 50px;
+  right: 0px;
 
   input {
     width: 50px;
@@ -179,7 +195,6 @@ input {
 
 #map {
   height: 230px;
-  width: 700px;
   border: 1px solid black;
   color: black;
 }
@@ -214,11 +229,27 @@ input {
 }
 
 @media(max-width: 1024px) {
-  body {
+  body{
     overflow: inherit;
-    height: auto;
   }
 
+  .backgroundImg{
+    height: auto;
+
+    .row:last-child{
+      position: relative;
+      margin-top:50px;
+    }
+  }
+
+  #chat ul{
+    width:100%;
+    height:auto;
+  }
+
+  .padding{
+    padding: 0 20px;
+  }
   .col-md-12 {
     height: auto;
   }
@@ -227,8 +258,6 @@ input {
     position: relative;
   }
 
-  .img-breakfast {
-    text-align: center;
-  }
+
 
 }

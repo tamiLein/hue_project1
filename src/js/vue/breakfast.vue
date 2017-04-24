@@ -2,9 +2,9 @@
     <div id="breakfast">
         <h2>Dein heutiges Frühstück:</h2>
         
-        <div class="col-md-6 col-sm-6 col-xs-6 padding">
+        <div class="col-md-6 col-sm-6 col-xs-6 ">
             <form>
-                <label for="schlaf">so lange hab ich geschlafen:</label> {{sleepInfo[sleep]}}
+                <label for="schlaf">so lange hab ich geschlafen:</label><br> {{sleepInfo[sleep]}}
                 <input id="schlaf" type="range" v-model="sleep" min="1" max="3" >
 
                 so müde fühl' ich mich heute:<br>
@@ -12,8 +12,8 @@
                 <input id="1" type="radio" v-model="muede" name="muede" value="1" @click="show = !show">
                 <label for="2">ausgeschlafen</label>
                 <input id="2" type="radio" v-model="muede" name="muede" value="2" @click="show = !show">
-
-                <label for="work">so viel hab ich heute zu tun:</label> {{workToDo[work]}}
+                <br>
+                <label for="work">so viel hab ich heute zu tun:</label><br> {{workToDo[work]}}
                 <input id="work" type="range" v-model="work" min="1" max="2">
             </form>
         </div>

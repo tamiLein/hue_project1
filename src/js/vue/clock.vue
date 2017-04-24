@@ -53,6 +53,10 @@
                 that.greeting ="ZzZzZz, "
             }
 
+
+            if(!that.name){
+                that.name = 'Mr. Right';
+            }
         },
     };
 

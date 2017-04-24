@@ -14,8 +14,8 @@
         </form>
         <ul>
             <li v-for="message in messages">
-                <button v-on:click="deleteMessage()">X</button>{{ message.message }}<br>
-                <small>{{ message.username }}, {{ message.createdAt | date }}</small>
+                <button v-on:click='deleteMessage(message.childKey)'>X</button>{{ message.childData.message }}<br>
+                <small>{{ message.childData.username }}, {{ message.childData.createdAt | date }}</small>
             </li>
         </ul>
 
@@ -33,7 +33,9 @@
                 username: 'Unknown',
                 message: '',
                 myMessageRef: '',
-                messages: []
+                messages: [
+
+                ]
             }
         },
         methods: {
@@ -41,11 +43,11 @@
                 const messagesRef = firebase.database().ref('messages').push();
 
                 this.myMessageRef = messagesRef;
+                console.log('Ref ' + messagesRef);
                 let chatMessage = {
                     message,
                     username,
-                    createdAt: (new Date()).getTime(),
-                    messagesRef
+                    createdAt: (new Date()).getTime()
                 };
 
                 messagesRef.set(chatMessage).catch(function(error) {
@@ -55,11 +57,8 @@
                     console.log('wrote data to database', chatMessage);
                 });
             },
-            deleteMessage: function(ref){
-                /*ref.remove(function(error) {
-                    alert(error ? "Uh oh!" : "Success!");
-                });*/
-                console.log("delet");
+            deleteMessage: function(key){
+                firebase.database().ref('messages').child(key).remove();
             }
         },
         mounted: function() {
@@ -73,12 +72,12 @@
 
                     let newMessages = [];
                     snapshot.forEach((childSnapshot) => {
-                        //var childKey = childSnapshot.key;
+                        var childKey = childSnapshot.key;
                         var childData = childSnapshot.val();
                         console.log(childData);
-                        newMessages.push(childData);
+                        newMessages.push({childKey, childData});
                     });
-
+                    console.log(newMessages);
                     this.messages = newMessages;
                 });
             });

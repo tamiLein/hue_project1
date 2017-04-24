@@ -60,16 +60,14 @@
 
                 });
 
+                $('.rain').innerHTML = '';
+
+                console.log(this.info);
                 if(/bewölkt/.test(this.info) || /wolken/.test(this.info)) {
-                    $('.rain').innerHTML = '';
                     this.createClouds();
                 }
-                else if(/regen/.test(this.info)) {
-                    $('.rain').innerHTML = '';
+                if(/regen/.test(this.info)) {
                     this.createRain();
-                }
-                else {
-                    $('.rain').innerHTML = '';
                 }
             },
             createRain: function(){

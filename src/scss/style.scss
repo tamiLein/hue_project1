@@ -13,9 +13,9 @@
 
 body {
   background-image: url("../img/background2.jpg");
-  background-size:cover;
+  background-size: cover;
   font-family: 'Lato', sans-serif;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   height: 100%;
   color: #fff;
   margin: 0;
@@ -35,32 +35,32 @@ ul {
   list-style: none;
 }
 
-.col-md-12{
+.col-md-12 {
   background-color: rgba(0, 0, 0, 0.53);
   height: 100vh;
 }
 
-.col-md-6{
+.col-md-6 {
   padding-left: 50px;
   padding-top: 20px;
 
-  div#chat, #chat *{
+  div#chat, #chat * {
     background-color: transparent;
 
-    input{
-      border-bottom:1px solid white;
+    input {
+      border-bottom: 1px solid white;
     }
 
-    small{
+    small {
       font-style: italic;
     }
 
-    .username{
+    .username {
       float: left;
       display: inline;
     }
 
-    form{
+    form {
       width: 50%;
       display: inline-block;
       margin: 10px 0;
@@ -86,18 +86,18 @@ input {
 
 }
 
-#clock{
+#clock {
   font-size: 35px;
 }
 
-#weather{
+#weather {
   height: 200px;
   width: 350px;
   position: absolute;
   right: 50px;
 
-  input{
-    width:50px;
+  input {
+    width: 50px;
   }
 }
 
@@ -110,12 +110,12 @@ input {
   text-align: center;
   font-size: 18px;
   font-style: italic;
-  width:99%;
+  width: 99%;
   bottom: 20px;
   position: absolute;
 }
 
-.icon{
+.icon {
   display: block;
   float: left;
   width: 150px;
@@ -128,7 +128,7 @@ input {
 #temp {
   font-family: Lato;
   font-size: 27px;
-  //line-height: normal;
+  line-height: normal;
 }
 
 #workout {
@@ -146,11 +146,11 @@ input {
   }
 }
 
-#vue-map{
+#vue-map {
   margin-top: 100px;
 }
 
-#map{
+#map {
   height: 230px;
   width: 700px;
   border: 1px solid black;
@@ -186,51 +186,63 @@ input {
   margin-top: 10px;
 }
 
-.animation-move{
-  font-size:100px;
+.animation-move {
+  font-size: 100px;
   position: absolute;
   @include animation(move, 15s, linear, infinite);
 }
 
 @-webkit-keyframes move {
-  to {margin-left:100%;}
-}
-@-moz-keyframes move {
-  to {margin-left:100%;}
+  to {
+    margin-left: 100%;
+  }
 }
 
-.animation-fall{
-  font-size:100px;
+@-moz-keyframes move {
+  to {
+    margin-left: 100%;
+  }
+}
+
+.animation-fall {
+  font-size: 100px;
   position: absolute;
   @include animation(fall, 10s, linear, infinite);
 }
 
 @-webkit-keyframes fall {
-  to {margin-top: 80% ;}
+  to {
+    margin-top: 80%;
+  }
 }
 
 @-moz-keyframes fall {
-  to {margin-top: 80%;}
+  to {
+    margin-top: 80%;
+  }
 }
 
-section .rain{
+section .rain {
   position: absolute;
   width: 100vw;
-  height:100vh;
+  height: 100vh;
 }
 
-@media(max-width: 1024px){
-  body{
+@media(max-width: 1024px) {
+  body {
     overflow: inherit;
     height: auto;
+  }
 
-  }.col-md-12{
-       height:auto;
-     }
-  #quote{
+  .col-md-12 {
+    height: auto;
+  }
+
+  #quote {
     position: relative;
-  }.img-breakfast{
-       text-align: center;
-     }
+  }
 
+  .img-breakfast {
+    text-align: center;
+  }
 }

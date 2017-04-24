@@ -2,7 +2,7 @@
     <div>
         <h2>Dein heutiges Frühstück:</h2>
         <div class="col-md-6">
-            <label for="schlaf">so lange hab ich geschlafen:</label> {{sleep}} Stunden
+            <label for="schlaf">so lange hab ich geschlafen:</label> {{sleepInfo[sleep]}}
             <input id="schlaf" type="range" v-model="sleep" min="1" max="3" >
 
             <label for="muede">so müde fühl' ich mich heute:</label> {{muedeInfo[muede]}}
@@ -20,6 +20,7 @@
         data: function() {
             return {
                 sleep: '1',
+                sleepInfo: ['', 'zu wenig', 'genug', 'länger als sonst'],
                 muede: '1',
                 muedeInfo: ['', 'sehr müde', 'ausgeschlafen'],
                 work: '1',

@@ -1,9 +1,9 @@
 <template lang="html">
     <div id="chat">
-        <h1>Chat</h1>
+        <h2>Chat</h2>
 
         <div>
-            status: {{ status }}
+            Status: {{ status }}
         </div>
         <div class="username">
             <input v-model="username">
@@ -18,8 +18,6 @@
                 <small>{{ message.childData.username }}, {{ message.childData.createdAt | date }}</small>
             </li>
         </ul>
-
-
     </div>
 </template>
 
@@ -32,24 +30,18 @@
                 status: '-',
                 username: 'Unknown',
                 message: '',
-                myMessageRef: '',
-                messages: [
-
-                ]
+                messages: []
             }
         },
         methods: {
             sendMessage: function(message, username) {
-                const messagesRef = firebase.database().ref('messages').push();
-
-                this.myMessageRef = messagesRef;
-                console.log('Ref ' + messagesRef);
                 let chatMessage = {
                     message,
                     username,
                     createdAt: (new Date()).getTime()
                 };
 
+                const messagesRef = firebase.database().ref('messages').push();
                 messagesRef.set(chatMessage).catch(function(error) {
                     console.error(error);
                 }).then(() => {
@@ -58,14 +50,18 @@
                 });
             },
             deleteMessage: function(key){
-                firebase.database().ref('messages').child(key).remove();
+                firebase.database().ref('messages').child(key).remove().catch(function(error) {
+                    console.log(error);
+                }).then(() => {
+                    console.log('message deleted');
+                });
             }
         },
         mounted: function() {
             firebase.auth().signInAnonymously().catch(function(error) {
                 console.error(error.message);
             }).then(() => {
-                this.status = "signed in";
+                this.status = "online";
 
                 firebase.database().ref('messages').on('value', (snapshot) => {
                     console.log('snapshot', snapshot);
@@ -74,10 +70,9 @@
                     snapshot.forEach((childSnapshot) => {
                         var childKey = childSnapshot.key;
                         var childData = childSnapshot.val();
-                        console.log(childData);
-                        newMessages.push({childKey, childData});
+                        newMessages.unshift({childKey, childData});
                     });
-                    console.log(newMessages);
+
                     this.messages = newMessages;
                 });
             });
@@ -86,9 +81,5 @@
 </script>
 
 <style lang="sass" scoped>
-    div {
-        background-color: #efefef;
-        padding: 10px;
-        margin: 10px 0;
-    }
+
 </style>

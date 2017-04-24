@@ -43,11 +43,11 @@
 
             if(hour < 11 && hour > 4){
                 that.greeting = 'Guten Morgen, '
-            }else if(hour < 14){
-                that.greeting = "Hallo, "
             }else if(hour < 18){
+                that.greeting = "Hallo, "
+            }else if(hour < 20){
                 that.greeting ="Guten Abend, "
-            }else if(hour < 22){
+            }else if(hour < 23){
                 that.greeting ="Gute Nacht, "
             }else{
                 that.greeting ="ZzZzZz, "

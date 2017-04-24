@@ -43,38 +43,62 @@ ul {
 .col-md-6 {
   padding-left: 50px;
   padding-top: 20px;
+}
 
-  div#chat, #chat * {
-    background-color: transparent;
+#breakfast {
+  margin-top: 30px;
+}
 
-    input {
-      border-bottom: 1px solid white;
+#chat {
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  input {
+    border-bottom: 1px solid white;
+    margin-right: 15px;
+  }
+
+  small {
+    font-style: italic;
+  }
+
+  .username {
+    float: left;
+    display: inline;
+    margin-top: 20px;
+
+  }
+
+  form {
+    width: 50%;
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 0;
+
+    button {
+      background-color: transparent;
+      font-size: 12px;
     }
+  }
 
-    small {
-      font-style: italic;
-    }
+  ul {
+    height: 250px;
+    overflow: auto;
+    width: 600px;
+    border: 1px solid white;
+    padding: 5px;
+    margin-top: 5px;
 
-    .username {
-      float: left;
-      display: inline;
-    }
-
-    form {
-      width: 50%;
-      display: inline-block;
-      margin: 10px 0;
-      padding: 10px 0;
-    }
-
-    ul {
-      li {
-        padding: 5px;
-      }
+    li {
+      padding: 5px;
+      background-color: rgba(112, 128, 144, 0.55);
+      margin: 5px;
 
       button {
         margin-right: 10px;
-        font-size: 11px;
+        font-size: 10px;
+        background-color: transparent;
       }
     }
   }
@@ -87,7 +111,7 @@ input {
 }
 
 #clock {
-  font-size: 35px;
+  font-size: 30px;
 }
 
 #weather {
@@ -132,7 +156,7 @@ input {
 }
 
 #workout {
-  margin-top: 40px;
+  margin-top: 30px;
 
   b {
     width: 100px;

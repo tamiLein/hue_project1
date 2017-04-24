@@ -1,5 +1,5 @@
 <template lang="html">
-    <div>
+    <div id="breakfast">
         <h2>Dein heutiges Frühstück:</h2>
         <div class="col-md-6">
             <label for="schlaf">so lange hab ich geschlafen:</label> {{sleepInfo[sleep]}}
@@ -10,7 +10,9 @@
             <label for="work">so viel hab ich heute zu tun:</label> {{workToDo[work]}}
             <input id="work" type="range" v-model="work" min="1" max="2">
         </div>
-        <div class="col-md-6 img-breakfast"><img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.png'" width="auto" height="200px"></div>
+        <div class="col-md-6 img-breakfast">
+            <img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.png'" width="auto" height="200px">
+        </div>
     </div>
 </template>
 

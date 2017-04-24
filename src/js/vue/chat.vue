@@ -1,9 +1,9 @@
 <template lang="html">
     <div id="chat">
-        <h1>Chat</h1>
+        <h2>Chat</h2>
 
         <div>
-            status: {{ status }}
+            Status: {{ status }}
         </div>
         <div class="username">
             <input v-model="username">
@@ -14,12 +14,10 @@
         </form>
         <ul>
             <li v-for="message in messages">
-                <button v-on:click="deleteMessage()">X</button>{{ message.message }}<br>
-                <small>{{ message.username }}, {{ message.createdAt | date }}</small>
+                <button v-on:click='deleteMessage(message.childKey)'>X</button>{{ message.childData.message }}<br>
+                <small>{{ message.childData.username }}, {{ message.childData.createdAt | date }}</small>
             </li>
         </ul>
-
-
     </div>
 </template>
 
@@ -32,23 +30,18 @@
                 status: '-',
                 username: 'Unknown',
                 message: '',
-                myMessageRef: '',
                 messages: []
             }
         },
         methods: {
             sendMessage: function(message, username) {
-                const messagesRef = firebase.database().ref('messages').push();
-
-                this.myMessageRef = messagesRef;
                 let chatMessage = {
                     message,
                     username,
-                    createdAt: (new Date()).getTime(),
-                    messageRef
+                    createdAt: (new Date()).getTime()
                 };
 
-
+                const messagesRef = firebase.database().ref('messages').push();
                 messagesRef.set(chatMessage).catch(function(error) {
                     console.error(error);
                 }).then(() => {
@@ -56,28 +49,28 @@
                     console.log('wrote data to database', chatMessage);
                 });
             },
-            deleteMessage: function(ref){
-                /*ref.remove(function(error) {
-                    alert(error ? "Uh oh!" : "Success!");
-                });*/
-                console.log("delet");
+            deleteMessage: function(key){
+                firebase.database().ref('messages').child(key).remove().catch(function(error) {
+                    console.log(error);
+                }).then(() => {
+                    console.log('message deleted');
+                });
             }
         },
         mounted: function() {
             firebase.auth().signInAnonymously().catch(function(error) {
                 console.error(error.message);
             }).then(() => {
-                this.status = "signed in";
+                this.status = "online";
 
                 firebase.database().ref('messages').on('value', (snapshot) => {
                     console.log('snapshot', snapshot);
 
                     let newMessages = [];
                     snapshot.forEach((childSnapshot) => {
-                        //var childKey = childSnapshot.key;
+                        var childKey = childSnapshot.key;
                         var childData = childSnapshot.val();
-                        console.log(childData);
-                        newMessages.push(childData);
+                        newMessages.unshift({childKey, childData});
                     });
 
                     this.messages = newMessages;
@@ -88,9 +81,5 @@
 </script>
 
 <style lang="sass" scoped>
-    div {
-        background-color: #efefef;
-        padding: 10px;
-        margin: 10px 0;
-    }
+
 </style>

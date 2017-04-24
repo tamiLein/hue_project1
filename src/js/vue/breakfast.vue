@@ -1,7 +1,8 @@
 <template lang="html">
-    <div>
+    <div id="breakfast">
         <h2>Dein heutiges Frühstück:</h2>
         <div class="col-md-6">
+
             <form>
                 <label for="schlaf">so lange hab ich geschlafen:</label> {{sleepInfo[sleep]}}
                 <input id="schlaf" type="range" v-model="sleep" min="1" max="3" >
@@ -16,11 +17,10 @@
                 <input id="work" type="range" v-model="work" min="1" max="2">
             </form>
         </div>
+
         <div class="col-md-6 img-breakfast">
-                    <img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.png'" width="auto" height="200px">
-
+            <img v-bind:src="'../img/fruehstueck/'+sleep+'-'+muede+'-'+work+'.png'" width="auto" height="200px">
         </div>
-
     </div>
 </template>
 
@@ -30,7 +30,7 @@
         data: function() {
             return {
                 sleep: '1',
-                sleepInfo: ['', 'wenig', 'ausreichend', 'viel'],
+                sleepInfo: ['', 'zu wenig', 'genug', 'länger als sonst'],
                 muede: '1',
                 muedeInfo: ['', 'sehr müde', 'ausgeschlafen'],
                 work: '1',

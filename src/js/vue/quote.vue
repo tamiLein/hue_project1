@@ -19,7 +19,6 @@
                 event.target.blur();
                 localStorage.setItem('name', this.name)
             },
-
         },
         mounted: function(){
             var that = this;
@@ -30,7 +29,6 @@
                 var jsondata = JSON.stringify(data);
                 that.text = data;
             });
-
         },
     };
 

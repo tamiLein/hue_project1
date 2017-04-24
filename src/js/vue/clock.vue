@@ -38,20 +38,17 @@
                 that.clock = digital;
             },1000);
 
-            console.log("mounted app");
             var date = new Date();
             var hour = date.getHours();
-            var that = this;
+
             if(hour < 11 && hour > 4){
-                that.greeting = 'Good Morning, '
-            }else if(hour < 14){
-                that.greeting = "Hello, "
+                that.greeting = 'Guten Morgen, '
             }else if(hour < 18){
-                that.greeting ="Good Afternoon, "
-            }else if(hour < 21){
-                that.greeting ="Good Evening, "
-            }else if(hour < 24){
-                that.greeting ="Good Night, "
+                that.greeting = "Hallo, "
+            }else if(hour < 20){
+                that.greeting ="Guten Abend, "
+            }else if(hour < 23){
+                that.greeting ="Gute Nacht, "
             }else{
                 that.greeting ="ZzZzZz, "
             }
